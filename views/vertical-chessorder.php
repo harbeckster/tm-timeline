@@ -35,7 +35,7 @@ if ( 0 < sizeof( $this->timeline_events ) ) :
 					?>
 					<div class="tm_timeline__event__dot"></div>
 					<?php
-					$date = apply_filters( 'tm_timeline_format_date', get_post_meta( $post->ID, 'post-event-date', true ), $this->config['date-format'] );
+					#$date = apply_filters( 'tm_timeline_format_date', get_post_meta( $post->ID, 'post-event-date', true ), $this->config['date-format'] );
 					?>
 					<div class="tm_timeline__event__date"><?php print esc_html( $date ); ?></div>
 					<?php if ( isset( $this->config['anchors'] ) && true == $this->config['anchors'] ) : ?>
