@@ -16,7 +16,7 @@ if ( 0 < sizeof( $this->timeline_events ) ) :
 
 		<div class="tm_timeline__body">
 
-			<div class="tm_timeline__tense"></div>
+			<div class="tm_timeline__tense" id="v4c_timeline__tense"></div>
 
 		<?php global $post;
 			$class_name = 'odd';
@@ -34,21 +34,24 @@ if ( 0 < sizeof( $this->timeline_events ) ) :
 						}
 					?>
 					<div class="tm_timeline__event__dot"></div>
-					<?php
-					#$date = apply_filters( 'tm_timeline_format_date', get_post_meta( $post->ID, 'post-event-date', true ), $this->config['date-format'] );
-					?>
-					<div class="tm_timeline__event__date"><?php print esc_html( $date ); ?></div>
-					<?php if ( isset( $this->config['anchors'] ) && true == $this->config['anchors'] ) : ?>
-						<div class="tm_timeline__event__title">
-							<a href="<?php print esc_attr( get_permalink( $post->ID ) ); ?>"><?php print esc_html( $post->post_title ); ?></a>
+					<div class="v4c_timeline__event__vertical_line"></div>
+					<div class="v4c_timeline__event__contentwrapper">
+						<?php
+						#$date = apply_filters( 'tm_timeline_format_date', get_post_meta( $post->ID, 'post-event-date', true ), $this->config['date-format'] );
+						?>
+						<div class="tm_timeline__event__date"><?php print esc_html( $date ); ?></div>
+						<?php if ( isset( $this->config['anchors'] ) && true == $this->config['anchors'] ) : ?>
+							<div class="tm_timeline__event__title">
+								<a href="<?php print esc_attr( get_permalink( $post->ID ) ); ?>"><?php print esc_html( $post->post_title ); ?></a>
+							</div>
+						<?php else : ?>
+							<div class="tm_timeline__event__title">
+								<?php print esc_html( $post->post_title ); ?>
+							</div>
+						<?php endif; ?>
+						<div class="tm_timeline__event__description">
+							<?php print apply_filters( 'tm_timeline_format_content', $post->post_content ); ?>
 						</div>
-					<?php else : ?>
-						<div class="tm_timeline__event__title">
-							<?php print esc_html( $post->post_title ); ?>
-						</div>
-					<?php endif; ?>
-					<div class="tm_timeline__event__description">
-						<?php print apply_filters( 'tm_timeline_format_content', $post->post_content ); ?>
 					</div>
 				</div>
 
